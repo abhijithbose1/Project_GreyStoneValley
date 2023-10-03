@@ -2,24 +2,26 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
     {
-        userName:{
+        userName: {
             type: String,
-            required: true
+            required: true,
+            unique:false    //even though unique=false. stil getting error messages on duplicate values.
         },
         email: {
             type: String,
             required: true,
-            unique: true
+            unique: true    /*since it's not a validator, you can't add custom error message.
+                    for that use validation on Controllers or use plug in //? npm mongoose-unique-validator */
         },
-        phone:{
+        phone: {
             type: Number,
         },
-        password:{
+        password: {
             type: String,
-        
+
         }
     }
 );
 
-const User= mongoose.model('User', userSchema);
-module.exports ={User};
+const User = mongoose.model('User', userSchema);
+module.exports = { User };

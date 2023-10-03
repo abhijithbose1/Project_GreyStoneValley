@@ -2,7 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const { connectDB } = require('./config/db');
 require('dotenv').config();
-const userRoute = require('./routes/user');
+
+const { userRoute } = require('./routes/userRoute');
+const { resortRoute } = require('./routes/resortsRoute');
+const { errorHandle } = require('./middlewares/errorHandle');
+
 
 const app = express();
 app.use(express.json());
@@ -12,8 +16,11 @@ connectDB();
 
 // -------- routes --------------
 app.use('/api/users', userRoute);
+app.use('/api/resorts', resortRoute );
 
 
+
+app.use(errorHandle);
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=>{
