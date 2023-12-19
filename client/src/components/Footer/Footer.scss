@@ -1,0 +1,14 @@
+.footer-container {
+
+    .first-footer {
+        display: flex;
+        justify-content: space-between;
+        .about-us-container {
+            display: flex;
+        }
+    }
+    .second-footer {
+        display: flex;
+        justify-content: space-between;
+    }
+}
