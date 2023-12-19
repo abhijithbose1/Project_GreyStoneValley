@@ -5,6 +5,7 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import "./Home.scss";
 import axios from "axios";
 import { Footer } from "../../components/Footer/Footer";
+import { SERVER } from "../../api";
 
 
 export const Home = () => {
@@ -12,7 +13,7 @@ export const Home = () => {
    
 
     const fetchData = async () => {
-        const response = await axios("http://localhost:3000/api/resorts");
+        const response = await axios(`${SERVER}/api/resorts`);
         console.log("response = ", response);
         setData(response.data.resorts);
     };
